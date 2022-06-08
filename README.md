@@ -61,5 +61,11 @@ def Render():
     name = "Bishnudev Khutia"
     return render_template('index.html',myName = name)
 ```
-### Jinja Templating Basics
-- Coming Soon :)
+### Render Image in Flask
+- Make a Static Folder in the main directory
+- Put any jpg or png image like 'image.jpg'
+```bash
+@app.route("/Render-Image")
+def RenderImage():
+    return render_template('Image.html')
+```
