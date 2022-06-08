@@ -24,3 +24,26 @@ def Hello():
 ```bash
 app.run()
 ```
+### Basic Static Site With Flask
+```bash
+
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def Home():
+    return 'This is Homepage'
+
+@app.route("/About")
+def About():
+    return 'This is About Section'
+
+@app.route("/Services")
+def Service():
+    return 'We Provide Following Services in Our Website'
+
+app.run(debug=True)
+
+# debug=True detects any change in code and restart the server automatically just like nodemon in Node and Express JS
+```
