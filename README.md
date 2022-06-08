@@ -47,3 +47,19 @@ app.run(debug=True)
 
 # debug=True detects any change in code and restart the server automatically just like nodemon in Node and Express JS
 ```
+### Render Templates in Flask
+- Make a Folder 'Templates'
+- Create a HTML file like 'index.html' in it
+```bash
+@app.route("/Flask-Tutorial")
+def Render():
+    return render_template('index.html')
+```
+- Passing Variables in Templates
+```bash
+def Render():
+    name = "Bishnudev Khutia"
+    return render_template('index.html',myName = name)
+```
+### Jinja Templating Basics
+- Coming Soon :)
