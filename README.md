@@ -22,7 +22,10 @@ def Hello():
 ```
 - Run The Server
 ```bash
-app.run()
+if __name__ == "__main__":
+    app.run(debug=True, port=8000) 
+
+# port is not mandetory, Flask gives us a default port 5000
 ```
 ### Basic Static Site With Flask
 ```bash
