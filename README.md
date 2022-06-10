@@ -72,7 +72,21 @@ def Render():
 def RenderImage():
     return render_template('Image.html')
 ```
-
+## Jinja Template in Flask
+- You can reuse Templates with Jinja just like we do in it React JS (Reuse Components).
+- Make a "general.html" and add Navbar and Footer in it.
+```bash
+<!-- Navbar Code -->
+    {% block body %} {% endblock body %}
+<!-- Footer Code -->
+```
+- Import it in another file like "index.html"
+```bash
+{% extends 'general.html' %}
+{% block body %}
+<!-- Body of "index.html" -->
+{% endblock body %}
+```
 ## Connecting to Database with Flask
 ### SQLite Database in Flask
 - Installing The SQLAlchemy Module
