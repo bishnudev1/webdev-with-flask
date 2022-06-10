@@ -72,3 +72,61 @@ def Render():
 def RenderImage():
     return render_template('Image.html')
 ```
+
+## Connecting to Database with Flask
+### SQLite Database in Flask
+- Installing The SQLAlchemy Module
+```bash
+pip install SQLAlchemy
+```
+- Importing The SQLAlchemy Module
+```bash
+from flask_sqlalchemy import SQLAlchemy
+```
+- If We Want to Create a Database Named "todo"
+```bash
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///todo.db"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+```
+- To Create The "todo" Database Hit Below Commands in Your Python Terminal
+```bash
+python
+from python import db
+db.create_all()
+exit()
+```
+- Initialize The Database
+```bash
+db = SQLAlchemy(app)
+```
+- Creating The Dababase Class & Tables
+```bash
+class Todo(db.Model):
+    sno = db.Column(db.Integer, primary_key=True)
+    # Nullable False User Can't Blank This Field
+    title = db.Column(db.String(200), nullable=False)
+    desc = db.Column(db.String(500), nullable=False)
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+ ```
+ - Commiting The Post Request 
+ ```bash
+ @app.route('/',methods=['GET','POST'])
+def todo():
+    if request.method == 'POST':
+        # todoTitle will the title value from "index.html" which has title name attribute
+        todoTitle = request.form['title']
+        todoDesc = request.form['desc']
+        # Storing The title and desc value from "index.html" to Todo Class
+        todo = Todo(title=todoTitle,desc=todoDesc)
+        # Storing The values to "todo" DB from Todo Class
+        db.session.add(todo)
+        # Pushing The Data
+        db.session.commit()
+    return render_template('index.html',allTodo = allTodo)
+ ```
+ - In HTML Set Method to Post and Action to it's Path
+ ```bash
+ <form class="container my-4" method="POST" action="/">
+<!-- Form Body -->
+ </form>
+ ```
